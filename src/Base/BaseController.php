@@ -6,7 +6,7 @@
  * Time: 18:06:34
  * By: BaseController.php
  */
-namespace framing\Base;
+namespace Yok\Base;
 
 class BaseController extends Phalcon\Mvc\Controller {
 	

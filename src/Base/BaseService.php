@@ -6,7 +6,7 @@
  * Time: 18:06:47
  * By: BaseService.php
  */
-namespace framing\Base;
+namespace Yok\Base;
 
 class BaseService {
 

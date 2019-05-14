@@ -6,7 +6,7 @@
  * Time: 09:09:02
  * By: Runmode.php
  */
-namespace framing\Library;
+namespace Yok\Library;
 
 class Runmode {
 	public static function get() {

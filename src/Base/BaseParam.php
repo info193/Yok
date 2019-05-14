@@ -6,7 +6,7 @@
  * Time: 18:06:37
  * By: BaseParam.php
  */
-namespace framing\Base;
+namespace Yok\Base;
 
 class BaseParam {
 

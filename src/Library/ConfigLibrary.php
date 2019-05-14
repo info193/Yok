@@ -6,7 +6,7 @@
  * Time: 18:06:39
  * By: ConfigLibrary.php
  */
-namespace framing\Library;
+namespace Yok\Library;
 
 class ConfigLibrary {
     /**
@@ -15,7 +15,7 @@ class ConfigLibrary {
      * @$param string $key      键
      */
     public static function get(string $filename,string $module,string $key='') {
-        $runmode = \framing\Library\Runmode::get();
+        $runmode = \Yok\Library\Runmode::get();
         $filename = CONF_PATH . '/' . $runmode . '/' . $filename . '.ini';
         $config = self::getConfigFile($filename,$module);
         if($config === null) {

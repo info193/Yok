@@ -6,7 +6,7 @@
  * Time: 09:09:40
  * By: Terminal.php
  */
-namespace framing\Library;
+namespace Yok\Library;
 
 class Terminal {
 	const UNKNOWN	= 0;

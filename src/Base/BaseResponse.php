@@ -6,7 +6,7 @@
  * Time: 18:06:31
  * By: BaseResponse.php
  */
-namespace framing\Base;
+namespace Yok\Base;
 
 class BaseResponse{
 

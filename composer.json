@@ -1,14 +1,14 @@
 {
-	"name":"ghupeng/framing",
+	"name":"info193/Yok",
 		"description":"Resource Storage SDK for PHP",
 		"version": "1.0.0",
 		"type": "library",
 		"license": "MIT",
-		"keywords":["ghupeng","framing"],
+		"keywords":["ghupeng","Yok"],
 		"authors":[
 		{
 			"name":"huguopeng",
-			"email":"ghupeng@163.com"
+			"email":"info193@163.com"
 		}
 		],
 		"require" :{
@@ -16,10 +16,10 @@
 		},
 		"autoload":{
 			"psr-4":{
-				"framing\\Library\\":"src/Library",
-				"framing\\Init\\":"src/Init",
-				"framing\\Plugin\\":"src/Plugin",
-				"framing\\Base\\":"src/Base"
+				"Yok\\Library\\":"src/Library",
+				"Yok\\Init\\":"src/Init",
+				"Yok\\Plugin\\":"src/Plugin",
+				"Yok\\Base\\":"src/Base"
 			}
 		}
 

@@ -6,7 +6,7 @@
  * Time: 18:06:07
  * By: BaseDao.php
  */
-namespace framing\Base;
+namespace Yok\Base;
 
 class BaseDao {
 

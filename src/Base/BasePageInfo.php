@@ -6,7 +6,7 @@
  * Time: 18:06:02
  * By: BasePageInfo.php
  */
-namespace framing\Base;
+namespace Yok\Base;
 
 class BasePageInfo {
 

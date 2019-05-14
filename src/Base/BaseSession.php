@@ -6,7 +6,7 @@
  * Time: 18:06:16
  * By: BaseSession.php
  */
-namespace framing\Base;
+namespace Yok\Base;
 
 class BaseSession {
 
