@@ -1,0 +1,26 @@
+{
+	"name":"ghupeng/framing",
+		"description":"Resource Storage SDK for PHP",
+		"version": "1.0.0",
+		"type": "library",
+		"license": "MIT",
+		"keywords":["ghupeng","framing"],
+		"authors":[
+		{
+			"name":"huguopeng",
+			"email":"ghupeng@163.com"
+		}
+		],
+		"require" :{
+			"php":">=7.0.0"
+		},
+		"autoload":{
+			"psr-4":{
+				"framing\\Library\\":"src/Library",
+				"framing\\Init\\":"src/Init",
+				"framing\\Plugin\\":"src/Plugin",
+				"framing\\Base\\":"src/Base"
+			}
+		}
+
+}
