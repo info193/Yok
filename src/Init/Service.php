@@ -50,7 +50,7 @@ class Service{
 		 * Setting up the dispatch
 		 */
 		$di->set('dispatcher',function () {
-				$lists = explode(',',ConfigLibrary:get('config','plugin','list'));
+				$lists = explode(',',ConfigLibrary::get('config','plugin','list'));
 				if(empty($lists)){
 					echo "插件有误"; die;
 				}
