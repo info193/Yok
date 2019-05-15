@@ -94,7 +94,6 @@ class Service{
 				return $router;
 		});
 
-
 		/**
 		 * Database connection is created based in the parameters defined in the configuration file
 		 */
