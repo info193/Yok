@@ -8,7 +8,7 @@
  */
 namespace Yok\Base;
 
-class BaseController extends Phalcon\Mvc\Controller {
+class BaseController extends \Phalcon\Mvc\Controller {
 	
 	public function exectue() {
 		
