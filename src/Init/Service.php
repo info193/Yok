@@ -31,8 +31,7 @@ class Service{
 				$view->setViewsDir($config->viewsDir);
 
 				$view->registerEngines(['.volt' => function ($view) {
-						$config = $this->getConfig();
-
+						$config = ConfigLibrary::get('config','application');
 						$volt = new VoltEngine($view, $this);
 
 						$volt->setOptions([
