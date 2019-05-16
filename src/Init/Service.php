@@ -19,7 +19,7 @@ use Phalcon\Events\Manager as EventsManager;
 use Yok\Library\ConfigLibrary;
 
 class Service{
-	public static function init(&$di) {
+	public function init(&$di) {
 		/**
 		 * Setting up the view component
 		 */

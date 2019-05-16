@@ -10,7 +10,7 @@ namespace Yok\Init;
 
 class Loader {
 
-	public static function init(&$loader,$config) {
+	public function init(&$loader,$config) {
 
 		/**
 		 * We're a registering a set of directories taken from the configuration file
