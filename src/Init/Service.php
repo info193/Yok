@@ -17,6 +17,7 @@ use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
 use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 use Phalcon\Events\Manager as EventsManager;
 use Yok\Library\ConfigLibrary;
+use Yok\Base\BasePageInfo;
 
 class Service{
 	public function init(&$di) {
@@ -48,7 +49,7 @@ class Service{
 		/**
 		 * Setting up the dispatch
 		 */
-		$di->set('dispatcher',function () {
+		$di->setShared('dispatcher',function () {
 				$lists = explode(',',ConfigLibrary::get('config','plugin','list'));
 				if(empty($lists)){
 					echo "插件有误"; die;
@@ -67,9 +68,15 @@ class Service{
 					}
 				}
 
+
 				// Attach a listener for type 'dispatch'
 				if( class_exists($pluginName)) {
-					$eventsManager->attach('dispatch', new $pluginName());
+					if(!empty($plugins[0])){
+						$dispatcherAttach = 'dispatch:'.$plugins[0];
+					} else {
+						$dispatcherAttach = 'dispatch';
+					}
+					$eventsManager->attach($dispatcherAttach, new $pluginName());
 				}
 
 				$dispatcher = new MvcDispatcher();
@@ -116,6 +123,8 @@ class Service{
 
 				return $connection;
 		});
+
+		 $di->setShared('basePageInfo',new BasePageInfo());
 
 		/**
 		 * Start the session the first time some component request the session service
