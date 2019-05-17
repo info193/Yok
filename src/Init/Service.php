@@ -66,19 +66,17 @@ class Service{
 					} else {
 						$pluginName = "\\".PJS_NAMESPACE."\\".PLUGIN_NAME."\\".$plugins[1];
 					}
-				}
 
-
-				// Attach a listener for type 'dispatch'
-				if( class_exists($pluginName)) {
-					if(!empty($plugins[0])){
-						$dispatcherAttach = 'dispatch:'.$plugins[0];
-					} else {
-						$dispatcherAttach = 'dispatch';
+					// Attach a listener for type 'dispatch'
+					if( class_exists($pluginName)) {
+						if(!empty($plugins[0])){
+							$dispatcherAttach = 'dispatch:'.$plugins[0];
+						} else {
+							$dispatcherAttach = 'dispatch';
+						}
+						$eventsManager->attach($dispatcherAttach, new $pluginName());
 					}
-					$eventsManager->attach($dispatcherAttach, new $pluginName());
 				}
-
 				$dispatcher = new MvcDispatcher();
 
 				// Bind the eventsManager to the view component
