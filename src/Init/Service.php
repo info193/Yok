@@ -49,7 +49,7 @@ class Service{
 		/**
 		 * Setting up the dispatch
 		 */
-		$di->setShared('dispatcher',function () {
+		$di->set('dispatcher',function () {
 				$lists = explode(',',ConfigLibrary::get('config','plugin','list'));
 				if(empty($lists)){
 					echo "插件有误"; die;
@@ -62,7 +62,7 @@ class Service{
 				foreach($pluginArr as $plugins) {
 					$pluginCnt = explode('_',$plugins[1]);
 					if(count($pluginCnt) == 2 && $pluginCnt[0] == 'SYS'){
-						$pluginName = "\\Yok\\Plugin\\".$plugins[1];
+						$pluginName = "\\Yok\\Plugin\\".$pluginCnt[1];
 					} else {
 						$pluginName = "\\".PJS_NAMESPACE."\\".PLUGIN_NAME."\\".$plugins[1];
 					}
