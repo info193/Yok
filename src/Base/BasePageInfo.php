@@ -14,6 +14,7 @@ class BasePageInfo {
 	public $runMode = 'online';
 	public $login   = true;
 	public $formCheck = true;
+	public $debug   = false;
 	public $module;
 	public $method;
 	public $sessionInfo;
