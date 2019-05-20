@@ -78,7 +78,7 @@ class BaseException extends \Exception {
 		if(class_exists($className)) {
 			return $className::$msg[$errorCode];
 		} else {
-			throw new  \Exception("not Errno Class.",self::INTER_ERROR);
+			throw new  \Exception("not Errno Class.",5000);
 		}
 	}
 

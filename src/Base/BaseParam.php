@@ -34,10 +34,11 @@ class BaseParam {
 			$length     = Annotations::getCommentValue($comment,'length');
 			$optional   = Annotations::getCommentValue($comment,'optional');
 			$regex      = Annotations::getCommentValue($comment,'regex');
+			$filter     = Annotations::getCommentValue($comment,'filter');
 			if( $optional == "" && $length == "" && $regex == "") {
 				$optional = ($length == "" && $regex == "") ? true : false;
 			}
-			$value = $this->getRequestParam($name, $value, $defaultValue, $type, $length, $regex, $optional);
+			$value = $this->getRequestParam($name, $value, $defaultValue, $type, $length, $regex, $filter, $optional);
 			$classIns->$propertyName = $value;
 		}
 	}
@@ -49,23 +50,23 @@ class BaseParam {
 	 * @param $type
 	 * @param $length
 	 * @param $regex
+	 * @filter $filter
 	 * @param $optional
 	 * @return int|string
 	 * @throws \Dai\Framework\Base\BaseException
 	 */
-	private function getRequestParam($name, $value, $defaultValue, $type, $length, $regex, $optional)
-	{
+	private function getRequestParam($name, $value, $defaultValue, $type, $length, $regex, $filter, $optional) {
 		if( $value == null ){
-			if( $optional == true || $defaultValue != null){
+			if( $optional == true || $defaultValue != null) {
 				return $defaultValue;
-			}else{
+			} else {
 				throw new BaseException( BaseException::PARAM_ERROR, $name);
 			}
 		}
 
-		if( $type == "Int"  ){
+		if( $type == "Int"  ) {
 			$value = intval($value);
-		}elseif( $type == "String"){
+		} elseif( $type == "String") {
 			$value = strval($value);
 		}
 
@@ -84,6 +85,9 @@ class BaseParam {
 					throw new BaseException( BaseException::PARAM_ERROR, $name.",".$lengthArr[0].",".$lengthArr[1].",".mb_strlen($value));
 				}
 			}
+		}
+		if(!empty($filter)) {
+			$value = $filter($value);
 		}
 		return $value;
 	}
