@@ -18,6 +18,14 @@ class FormFilterPlugin extends Plugin {
 		if($basePageInfo->formCheck === false) {
 			return true;
 		}
+		$request = $di->getRequest();
+		$debug = $request->getPost("debug");
+		if($debug == null){
+			$debug = $request->getQuery("debug");
+		}
+		if(strtoupper($basePageInfo->requestType) !== $request->getMethod()){
+			echo "请求方式有误";die;
+		}
 		$module = ucfirst($basePageInfo->module);
 		$method = ucfirst($basePageInfo->method);
 		$className = PJS_NAMESPACE."\\Models\\".$module."\\Param\\".$method."Param";
