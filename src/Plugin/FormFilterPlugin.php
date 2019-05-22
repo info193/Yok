@@ -11,6 +11,8 @@ namespace Yok\Plugin;
 use Phalcon\Events\Event;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\User\Plugin;
+use Yok\Base\BaseException;
+
 class FormFilterPlugin extends Plugin {
 	public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher){
 		$di = \Phalcon\DI::getDefault();
@@ -24,7 +26,7 @@ class FormFilterPlugin extends Plugin {
 			$debug = $request->getQuery("debug");
 		}
 		if(strtoupper($basePageInfo->requestType) !== $request->getMethod()){
-			echo "请求方式有误";die;
+			throw new BaseException(BaseException::PARAM_ERROR,$request->getMethod());
 		}
 		$module = ucfirst($basePageInfo->module);
 		$method = ucfirst($basePageInfo->method);
@@ -34,9 +36,11 @@ class FormFilterPlugin extends Plugin {
 			$classIns->vaild($classIns,$di,$basePageInfo);
 			$basePageInfo->params = $classIns;
 		} else {
-			echo "参数校验文件未找到";die;
+			throw new BaseException(BaseException::INTER_ERROR);
 		}
+		echo $basePageInfo->params->debug;die;
 		print_r($basePageInfo);die;
 	}
 }
+
 
