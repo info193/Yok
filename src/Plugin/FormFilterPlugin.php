@@ -12,6 +12,7 @@ use Phalcon\Events\Event;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\User\Plugin;
 use Yok\Base\BaseException;
+use Yok\Library\Log;
 
 class FormFilterPlugin extends Plugin {
 	public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher){
@@ -33,7 +34,7 @@ class FormFilterPlugin extends Plugin {
 		$className = "\\".PJS_NAMESPACE."\\Models\\".$module."\\Param\\".$method."Param";
 
 		if( !class_exists($className) ) {
-			// 记录日志 文件不存在
+			Log::error("className $className not exit");
 			throw new BaseException(BaseException::INTER_ERROR);
 		}
 		$classIns = new $className();
