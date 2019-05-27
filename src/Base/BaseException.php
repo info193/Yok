@@ -9,11 +9,15 @@
 namespace Yok\Base;
 
 class BaseException extends \Exception {
+	const MAX_LIMIT_FAIL    = 9997;
+	const MIN_LIMIT_FAIL    = 9998;
 	const PARAM_ERROR       = 9999;
 	const INTER_ERROR       = 5000;
 	const SERVER_PROXY_ERROR= 5001;
 	const PARTNER_ERROR     = 5002;
 	public static $msg = [
+		self::MAX_LIMIT_FAIL        => '参数超过最大限制',
+		self::MIN_LIMIT_FAIL        => '参数小于最小限制',
 		self::PARAM_ERROR           => '参数有误',
 		self::INTER_ERROR           => '内部错误',
 		self::SERVER_PROXY_ERROR    => '存管服务中断或异常',
@@ -28,12 +32,10 @@ class BaseException extends \Exception {
 	public function __construct($code,$message = "") {
 		$this->code = $code;
 		$this->message = self::getErrorMsg( $code );
-		if($this->code !== intval(self::PARAM_ERROR)) {
+		if(!in_array($this->code,[self::PARAM_ERROR,self::MAX_LIMIT_FAIL,self::MIN_LIMIT_FAIL])) {
 			if( $message != "") {
 				$this->message .= $message;
 			}
-		} else {
-			// 记录参数有误日志
 		}
 	}
 
