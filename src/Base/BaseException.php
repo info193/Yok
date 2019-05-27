@@ -46,26 +46,30 @@ class BaseException extends \Exception {
 	/**
 	 * @param $exception
 	 */
-	public function errorMsg($exception){
+	public static function errorMsg($exception){
 		$code = $exception->getCode();
 		if(empty(self::$msg[$code])){
 			$className = PJS_NAMESPACE."\\Errno\\Errno";
 			if(class_exists($className)) {
 				if(!empty($className::$msg[$code])){
 					$msg  = $className::$msg[$code];
+				} else {
+					$code = self::INTER_ERROR;
+					$msg  = self::$msg[$code];
 				}
 			} else {
 				$code = self::INTER_ERROR;
 				$msg  = self::$msg[$code];
 			}
 		} else {
-			$msg = self::$msg[$code];
+			$code = self::INTER_ERROR;
+			$msg  = self::$msg[$code];
 		}
 		$data = [];
 		$data['errno'] = $code;
 		$data['msg']   = $msg;
 		$data['data']  = [];
-		Log::error(json_encode($data).$exception->getCode().'|'.$exception->getMessage());
+		Log::error('[code:'.$exception->getCode().'],[msg:'.$exception->getMessage().'],'.json_encode($data));
 		echo json_encode($data,JSON_UNESCAPED_UNICODE);
 		exit;
 
