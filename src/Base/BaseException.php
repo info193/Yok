@@ -8,6 +8,8 @@
  */
 namespace Yok\Base;
 
+use Yok\Library\Log;
+
 class BaseException extends \Exception {
 	const MAX_LIMIT_FAIL    = 9997;
 	const MIN_LIMIT_FAIL    = 9998;
@@ -32,7 +34,9 @@ class BaseException extends \Exception {
 	public function __construct($code,$message = "") {
 		$this->code = $code;
 		$this->message = self::getErrorMsg( $code );
-		if(!in_array($this->code,[self::PARAM_ERROR,self::MAX_LIMIT_FAIL,self::MIN_LIMIT_FAIL])) {
+		if(in_array($this->code,[self::PARAM_ERROR,self::MAX_LIMIT_FAIL,self::MIN_LIMIT_FAIL])) {
+			Log::alert($code.$message);
+		} else {
 			if( $message != "") {
 				$this->message .= $message;
 			}
@@ -61,7 +65,7 @@ class BaseException extends \Exception {
 		$data['errno'] = $code;
 		$data['msg']   = $msg;
 		$data['data']  = [];
-		// 记录日志
+		Log::error(json_encode($data).$exception->getCode().'|'.$exception->getMessage());
 		echo json_encode($data,JSON_UNESCAPED_UNICODE);
 		exit;
 
