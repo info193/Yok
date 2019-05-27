@@ -30,16 +30,15 @@ class FormFilterPlugin extends Plugin {
 		}
 		$module = ucfirst($basePageInfo->module);
 		$method = ucfirst($basePageInfo->method);
-		$className = PJS_NAMESPACE."\\Models\\".$module."\\Param\\".$method."Param";
-		if(class_exists($className)) {
-			$classIns = new $className();
-			$classIns->vaild($classIns,$di,$basePageInfo);
-			$basePageInfo->params = $classIns;
-		} else {
+		$className = "\\".PJS_NAMESPACE."\\Models\\".$module."\\Param\\".$method."Param";
+
+		if( !class_exists($className) ) {
+			// 记录日志 文件不存在
 			throw new BaseException(BaseException::INTER_ERROR);
 		}
-		echo $basePageInfo->params->debug;die;
-		print_r($basePageInfo);die;
+		$classIns = new $className();
+		$classIns->vaild($classIns,$di,$basePageInfo);
+		$basePageInfo->params = $classIns;
 	}
 }
 
