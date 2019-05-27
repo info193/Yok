@@ -22,6 +22,10 @@ class AnnotationsPlugin extends Plugin{
 		$basePageInfo = (\Phalcon\DI::getDefault())->get('basePageInfo');
 		// get system Running env.
 		$basePageInfo->runMode = Runmode::get();
+
+		// get client IP .
+		$request = (\Phalcon\DI::getDefault())->get('request');
+		$basePageInfo->requestIP = $request->getClientAddress();
 		// Possible controller class name
 		$controller = $dispatcher->getControllerClass();
 		$basePageInfo->module = str_replace('Controller','',$controller);
