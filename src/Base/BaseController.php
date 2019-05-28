@@ -17,7 +17,7 @@ class BaseController extends \Phalcon\Mvc\Controller {
 		$className = PJS_NAMESPACE."\\Models\\".$module."\\Service\\".$method;
 		if(class_exists($className)) {
 			$serviceIns = new $className();
-			$data = $serviceIns->exectue();
+			$data = $serviceIns->exectue($basePageInfo);
 		} else {
 			echo "调用文件不存在";die;
 		}
