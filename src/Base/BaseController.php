@@ -8,6 +8,7 @@
  */
 namespace Yok\Base;
 
+use Yok\Library\Log;
 class BaseController extends \Phalcon\Mvc\Controller {
 
 	public function exectue() {
@@ -19,7 +20,8 @@ class BaseController extends \Phalcon\Mvc\Controller {
 			$serviceIns = new $className();
 			$data = $serviceIns->exectue($basePageInfo);
 		} else {
-			echo "调用文件不存在";die;
+			Log::error("className $className not exit");		
+			throw new BaseException(BaseException::INTER_ERROR)
 		}
 		if($basePageInfo->format === 'json'){
 			echo json_encode($data,JSON_UNESCAPED_UNICODE);
