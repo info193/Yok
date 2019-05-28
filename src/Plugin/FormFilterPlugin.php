@@ -36,6 +36,7 @@ class FormFilterPlugin extends Plugin {
 		if( !class_exists($className) ) {
 			Log::error("className $className not exit");
 			throw new BaseException(BaseException::INTER_ERROR);
+			die;
 		}
 		$classIns = new $className();
 		$classIns->vaild($classIns,$di,$basePageInfo);
