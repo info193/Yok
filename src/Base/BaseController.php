@@ -21,7 +21,7 @@ class BaseController extends \Phalcon\Mvc\Controller {
 			$data = $serviceIns->exectue($basePageInfo);
 		} else {
 			Log::error("className $className not exit");		
-			throw new BaseException(BaseException::INTER_ERROR)
+			throw new BaseException(BaseException::INTER_ERROR);
 		}
 		if($basePageInfo->format === 'json'){
 			echo json_encode($data,JSON_UNESCAPED_UNICODE);
