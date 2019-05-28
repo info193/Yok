@@ -21,7 +21,7 @@ class BaseException extends \Exception {
 		self::MAX_LIMIT_FAIL        => '参数超过最大限制',
 		self::MIN_LIMIT_FAIL        => '参数小于最小限制',
 		self::PARAM_ERROR           => '参数有误',
-		self::INTER_ERROR           => '内部错误',
+		self::INTER_ERROR           => '系统玩命处理中',
 		self::SERVER_PROXY_ERROR    => '存管服务中断或异常',
 		self::PARTNER_ERROR         => '合作方服务中断或异常'
 	];
