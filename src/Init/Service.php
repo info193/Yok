@@ -97,7 +97,7 @@ class Service{
 		/**
 		 * Database connection is created based in the parameters defined in the configuration file
 		 */
-		$di->setShared('db', function () {
+		$di->setShared('slave', function () {
 			$config = ConfigLibrary::get('config','database');
 
 			$class = 'Phalcon\Db\Adapter\Pdo\\' . $config->adapter;
