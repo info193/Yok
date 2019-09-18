@@ -9,5 +9,7 @@
 namespace Yok\Base;
 
 class BaseResponse{
-
+    public $erron   = 0;
+    public $msg     = 'success';
+    public $data;
 }

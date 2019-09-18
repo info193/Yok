@@ -11,6 +11,7 @@ namespace Yok\Base;
 use Yok\Library\Log;
 
 class BaseException extends \Exception {
+	const DB_ERROR          = 9996
 	const MAX_LIMIT_FAIL    = 9997;
 	const MIN_LIMIT_FAIL    = 9998;
 	const PARAM_ERROR       = 9999;
@@ -23,7 +24,8 @@ class BaseException extends \Exception {
 		self::PARAM_ERROR           => '参数有误',
 		self::INTER_ERROR           => '系统玩命处理中',
 		self::SERVER_PROXY_ERROR    => '存管服务中断或异常',
-		self::PARTNER_ERROR         => '合作方服务中断或异常'
+		self::PARTNER_ERROR         => '合作方服务中断或异常',
+		self::DB_ERROR		    => '数据库操作错误',
 	];
 
 	/**
