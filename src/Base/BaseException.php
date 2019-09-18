@@ -11,7 +11,7 @@ namespace Yok\Base;
 use Yok\Library\Log;
 
 class BaseException extends \Exception {
-	const DB_ERROR          = 9996
+	const DB_ERROR          = 9996;
 	const MAX_LIMIT_FAIL    = 9997;
 	const MIN_LIMIT_FAIL    = 9998;
 	const PARAM_ERROR       = 9999;
